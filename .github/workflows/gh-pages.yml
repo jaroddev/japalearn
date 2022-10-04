@@ -20,5 +20,4 @@ jobs:
 
       - name: Deply to gh-pages
         run: |
-          npm i -D gh-pages
           npx gh-pages -d dist
