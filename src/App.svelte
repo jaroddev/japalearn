@@ -1,36 +1,22 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { Alphabet, KanaFactory } from "./model/alphabet.js";
+  import { KanaSubsetMock } from "./data/mock.js";
 
-  import type { Repository, Letter } from "./data/mock.js";
-  import { MockDAO } from "./data/mock.js";
+  import SubSet from "./lib/SubSet.svelte";
 
-  import LetterTile from "./lib/LetterTile.svelte";
-
-  const repo: Repository = new MockDAO();
-  let letters: Array<Letter> = [];
-
-  onMount(() => {
-    letters = repo.ListLetter();
-  });
+  const mock = new KanaSubsetMock();
+  let alphabet: Alphabet = KanaFactory.createKana(mock);
 </script>
 
 <main>
-  <div class="grid">
-    {#each letters as { romaji, hiragana }}
-      <LetterTile japanese={hiragana} {romaji} />
-    {/each}
-  </div>
+  {#each alphabet.subsets as { name, letters }}
+    <SubSet {name} {letters} />
+  {/each}
 </main>
 
 <style>
   main {
     width: 30%;
     margin: 0 auto;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
   }
 </style>

@@ -1,271 +1,385 @@
-export class Letter {
-    romaji: string;
-    hiragana: string;
-    katakana: string;
-}
+import type { KanaSubsetFactory, Subset } from "../model/alphabet";
 
-export interface Repository {
-    ListLetter(): Array<Letter>
-    // CheckAnswer(have: string, want: string, letter: Letter): GuessResult
-}
-
-class GuessResult { }
-export class Correct extends GuessResult { }
-export class Wrong extends GuessResult { }
-
-class Exercice {
-    letter: Letter
-    have: string
-    want: string
-}
-
-
-export class MockDAO implements Repository {
-
-    ListLetter(): Array<Letter> {
-        return [
-            {
-                "romaji": "a",
-                "hiragana": "あ",
-                "katakana": ""
-            },
-            {
-                "romaji": "i",
-                "hiragana": "い",
-                "katakana": ""
-            },
-            {
-                "romaji": "u",
-                "hiragana": "う",
-                "katakana": ""
-            },
-            {
-                "romaji": "e",
-                "hiragana": "え",
-                "katakana": ""
-            },
-            {
-                "romaji": "o",
-                "hiragana": "お",
-                "katakana": ""
-            },
-            {
-                "romaji": "ka",
-                "hiragana": "か",
-                "katakana": ""
-            },
-            {
-                "romaji": "ki",
-                "hiragana": "き",
-                "katakana": ""
-            },
-            {
-                "romaji": "ku",
-                "hiragana": "く",
-                "katakana": ""
-            },
-            {
-                "romaji": "ke",
-                "hiragana": "け",
-                "katakana": ""
-            },
-            {
-                "romaji": "ko",
-                "hiragana": "こ",
-                "katakana": ""
-            },
-            {
-                "romaji": "sa",
-                "hiragana": "さ",
-                "katakana": ""
-            },
-            {
-                "romaji": "shi",
-                "hiragana": "し",
-                "katakana": ""
-            },
-            {
-                "romaji": "su",
-                "hiragana": "す",
-                "katakana": ""
-            },
-            {
-                "romaji": "se",
-                "hiragana": "せ",
-                "katakana": ""
-            },
-            {
-                "romaji": "so",
-                "hiragana": "そ",
-                "katakana": ""
-            },
-            {
-                "romaji": "ta",
-                "hiragana": "た",
-                "katakana": ""
-            },
-            {
-                "romaji": "chi",
-                "hiragana": "ち",
-                "katakana": ""
-            },
-            {
-                "romaji": "tsu",
-                "hiragana": "つ",
-                "katakana": ""
-            },
-            {
-                "romaji": "te",
-                "hiragana": "て",
-                "katakana": ""
-            },
-            {
-                "romaji": "to",
-                "hiragana": "と",
-                "katakana": ""
-            },
-            {
-                "romaji": "na",
-                "hiragana": "な",
-                "katakana": ""
-            },
-            {
-                "romaji": "ni",
-                "hiragana": "に",
-                "katakana": ""
-            },
-            {
-                "romaji": "nu",
-                "hiragana": "ぬ",
-                "katakana": ""
-            },
-            {
-                "romaji": "ne",
-                "hiragana": "ね",
-                "katakana": ""
-            },
-            {
-                "romaji": "no",
-                "hiragana": "の",
-                "katakana": ""
-            },
-            {
-                "romaji": "ha",
-                "hiragana": "は",
-                "katakana": ""
-            },
-            {
-                "romaji": "hi",
-                "hiragana": "ひ",
-                "katakana": ""
-            },
-            {
-                "romaji": "fu",
-                "hiragana": "ふ",
-                "katakana": ""
-            },
-            {
-                "romaji": "he",
-                "hiragana": "へ",
-                "katakana": ""
-            },
-            {
-                "romaji": "ho",
-                "hiragana": "ほ",
-                "katakana": ""
-            },
-            {
-                "romaji": "ma",
-                "hiragana": "ま",
-                "katakana": ""
-            },
-            {
-                "romaji": "mi",
-                "hiragana": "み",
-                "katakana": ""
-            },
-            {
-                "romaji": "mu",
-                "hiragana": "む",
-                "katakana": ""
-            },
-            {
-                "romaji": "me",
-                "hiragana": "め",
-                "katakana": ""
-            },
-            {
-                "romaji": "mo",
-                "hiragana": "も",
-                "katakana": ""
-            },
-            {
-                "romaji": "ya",
-                "hiragana": "や",
-                "katakana": ""
-            },
-            {
-                "romaji": "yu",
-                "hiragana": "ゆ",
-                "katakana": ""
-            },
-            {
-                "romaji": "yo",
-                "hiragana": "よ",
-                "katakana": ""
-            },
-            {
-                "romaji": "ra",
-                "hiragana": "ら",
-                "katakana": ""
-            },
-            {
-                "romaji": "ri",
-                "hiragana": "り",
-                "katakana": ""
-            },
-            {
-                "romaji": "ru",
-                "hiragana": "る",
-                "katakana": ""
-            },
-            {
-                "romaji": "re",
-                "hiragana": "れ",
-                "katakana": ""
-            },
-            {
-                "romaji": "ro",
-                "hiragana": "ろ",
-                "katakana": ""
-            },
-            {
-                "romaji": "wa",
-                "hiragana": "わ",
-                "katakana": ""
-            },
-            {
-                "romaji": "n",
-                "hiragana": "ん",
-                "katakana": ""
-            }
-        ]
-    }
-
-
-    CheckAnswer(exercice: Exercice, answer: string) {
-        let input: string;
-        let output: string;
-
-        switch (exercice.have) {
-            case "":
-
-                break;
-
-            default:
-                break;
+export class KanaSubsetMock implements KanaSubsetFactory {
+    common(): Subset {
+        return {
+            name: "Hiragana",
+            letters: [
+                {
+                    "romaji": "a",
+                    "hiragana": "あ",
+                    "katakana": "ア"
+                },
+                {
+                    "romaji": "i",
+                    "hiragana": "い",
+                    "katakana": "イ"
+                },
+                {
+                    "romaji": "u",
+                    "hiragana": "う",
+                    "katakana": "ウ"
+                },
+                {
+                    "romaji": "e",
+                    "hiragana": "え",
+                    "katakana": "エ"
+                },
+                {
+                    "romaji": "o",
+                    "hiragana": "お",
+                    "katakana": "オ"
+                },
+                {
+                    "romaji": "ka",
+                    "hiragana": "か",
+                    "katakana": "カ"
+                },
+                {
+                    "romaji": "ki",
+                    "hiragana": "き",
+                    "katakana": "キ"
+                },
+                {
+                    "romaji": "ku",
+                    "hiragana": "く",
+                    "katakana": "ク"
+                },
+                {
+                    "romaji": "ke",
+                    "hiragana": "け",
+                    "katakana": "ケ"
+                },
+                {
+                    "romaji": "ko",
+                    "hiragana": "こ",
+                    "katakana": "コ"
+                },
+                {
+                    "romaji": "sa",
+                    "hiragana": "さ",
+                    "katakana": "サ"
+                },
+                {
+                    "romaji": "shi",
+                    "hiragana": "し",
+                    "katakana": "シ"
+                },
+                {
+                    "romaji": "su",
+                    "hiragana": "す",
+                    "katakana": "ス"
+                },
+                {
+                    "romaji": "se",
+                    "hiragana": "せ",
+                    "katakana": "セ"
+                },
+                {
+                    "romaji": "so",
+                    "hiragana": "そ",
+                    "katakana": "ソ"
+                },
+                {
+                    "romaji": "ta",
+                    "hiragana": "た",
+                    "katakana": "タ"
+                },
+                {
+                    "romaji": "chi",
+                    "hiragana": "ち",
+                    "katakana": "チ"
+                },
+                {
+                    "romaji": "tsu",
+                    "hiragana": "つ",
+                    "katakana": "ツ"
+                },
+                {
+                    "romaji": "te",
+                    "hiragana": "て",
+                    "katakana": "テ"
+                },
+                {
+                    "romaji": "to",
+                    "hiragana": "と",
+                    "katakana": "ト"
+                },
+                {
+                    "romaji": "na",
+                    "hiragana": "な",
+                    "katakana": "ナ"
+                },
+                {
+                    "romaji": "ni",
+                    "hiragana": "に",
+                    "katakana": "ニ"
+                },
+                {
+                    "romaji": "nu",
+                    "hiragana": "ぬ",
+                    "katakana": "ヌ"
+                },
+                {
+                    "romaji": "ne",
+                    "hiragana": "ね",
+                    "katakana": "ネ"
+                },
+                {
+                    "romaji": "no",
+                    "hiragana": "の",
+                    "katakana": "ノ"
+                },
+                {
+                    "romaji": "ha",
+                    "hiragana": "は",
+                    "katakana": "ハ"
+                },
+                {
+                    "romaji": "hi",
+                    "hiragana": "ひ",
+                    "katakana": "ヒ"
+                },
+                {
+                    "romaji": "fu",
+                    "hiragana": "ふ",
+                    "katakana": "フ"
+                },
+                {
+                    "romaji": "he",
+                    "hiragana": "へ",
+                    "katakana": "ヘ"
+                },
+                {
+                    "romaji": "ho",
+                    "hiragana": "ほ",
+                    "katakana": "ホ"
+                },
+                {
+                    "romaji": "ma",
+                    "hiragana": "ま",
+                    "katakana": "マ"
+                },
+                {
+                    "romaji": "mi",
+                    "hiragana": "み",
+                    "katakana": "ミ"
+                },
+                {
+                    "romaji": "mu",
+                    "hiragana": "む",
+                    "katakana": "ム"
+                },
+                {
+                    "romaji": "me",
+                    "hiragana": "め",
+                    "katakana": "メ"
+                },
+                {
+                    "romaji": "mo",
+                    "hiragana": "も",
+                    "katakana": "モ"
+                },
+                {
+                    "romaji": "ra",
+                    "hiragana": "ら",
+                    "katakana": "ラ"
+                },
+                {
+                    "romaji": "ri",
+                    "hiragana": "り",
+                    "katakana": "リ"
+                },
+                {
+                    "romaji": "ru",
+                    "hiragana": "る",
+                    "katakana": "ル"
+                },
+                {
+                    "romaji": "re",
+                    "hiragana": "れ",
+                    "katakana": "レ"
+                },
+                {
+                    "romaji": "ro",
+                    "hiragana": "ろ",
+                    "katakana": "ロ"
+                },
+            ]
         }
     }
 
+    extended(): Subset {
+        return {
+            name: "Other Hiragana",
+            letters: [
+                {
+                    "romaji": "ya",
+                    "hiragana": "や",
+                    "katakana": "ヤ"
+                },
+                {
+                    "romaji": "yu",
+                    "hiragana": "ゆ",
+                    "katakana": "ユ"
+                },
+                {
+                    "romaji": "yo",
+                    "hiragana": "よ",
+                    "katakana": "ヨ"
+                },
+                {
+                    "romaji": "wa",
+                    "hiragana": "わ",
+                    "katakana": "ワ"
+                },
+                {
+                    "romaji": "n",
+                    "hiragana": "ん",
+                    "katakana": "ン"
+                }
+            ]
+        }
+    }
 
+    dakuon(): Subset {
+        return {
+            name: "Dakuon",
+            letters: [
+                {
+                    "romaji": "ga",
+                    "hiragana": "が",
+                    "katakana": "ガ"
+                },
+                {
+                    "romaji": "gi",
+                    "hiragana": "ぎ",
+                    "katakana": "ギ"
+                },
+                {
+                    "romaji": "gu",
+                    "hiragana": "ぐ",
+                    "katakana": "グ"
+                },
+                {
+                    "romaji": "ge",
+                    "hiragana": "げ",
+                    "katakana": "ゲ"
+                },
+                {
+                    "romaji": "go",
+                    "hiragana": "ご",
+                    "katakana": "ゴ"
+                },
+                {
+                    "romaji": "za",
+                    "hiragana": "ざ",
+                    "katakana": "ザ"
+                },
+                {
+                    "romaji": "ji",
+                    "hiragana": "じ",
+                    "katakana": "ジ"
+                },
+                {
+                    "romaji": "zu",
+                    "hiragana": "ず",
+                    "katakana": "ズ"
+                },
+                {
+                    "romaji": "ze",
+                    "hiragana": "ぜ",
+                    "katakana": "ゼ"
+                },
+                {
+                    "romaji": "zo",
+                    "hiragana": "ぞ",
+                    "katakana": "ゾ"
+                },
+                {
+                    "romaji": "da",
+                    "hiragana": "だ",
+                    "katakana": "ダ"
+                },
+                {
+                    "romaji": "ji",
+                    "hiragana": "ぢ",
+                    "katakana": "ヂ"
+                },
+                {
+                    "romaji": "zu",
+                    "hiragana": "づ",
+                    "katakana": "ヅ"
+                },
+                {
+                    "romaji": "de",
+                    "hiragana": "で",
+                    "katakana": "デ"
+                },
+                {
+                    "romaji": "do",
+                    "hiragana": "ど",
+                    "katakana": "ド"
+                },
+                {
+                    "romaji": "ba",
+                    "hiragana": "ば",
+                    "katakana": "バ"
+                },
+                {
+                    "romaji": "bi",
+                    "hiragana": "び",
+                    "katakana": "ビ"
+                },
+                {
+                    "romaji": "bu",
+                    "hiragana": "ぶ",
+                    "katakana": "ブ"
+                },
+                {
+                    "romaji": "be",
+                    "hiragana": "べ",
+                    "katakana": "ベ"
+                },
+                {
+                    "romaji": "bo",
+                    "hiragana": "ぼ",
+                    "katakana": "ボ"
+                },
+            ]
+        }
+    }
+
+    handakuon(): Subset {
+        return {
+            "name": "Handakuon",
+            letters: [
+                {
+                    "romaji": "pa",
+                    "hiragana": "ぱ",
+                    "katakana": "パ"
+                },
+                {
+                    "romaji": "pi",
+                    "hiragana": "ぴ",
+                    "katakana": "ピ"
+                },
+                {
+                    "romaji": "pu",
+                    "hiragana": "ぷ",
+                    "katakana": "プ"
+                },
+                {
+                    "romaji": "pe",
+                    "hiragana": "ぺ",
+                    "katakana": "ペ"
+                },
+                {
+                    "romaji": "po",
+                    "hiragana": "ぽ",
+                    "katakana": "ポ"
+                },
+            ]
+        }
+    }
 }
