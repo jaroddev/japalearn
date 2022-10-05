@@ -16,7 +16,19 @@
 
 <style>
   main {
-    width: 30%;
+    width: 50%;
     margin: 0 auto;
+  }
+
+  @media screen and (max-width: 768px) {
+    main {
+      width: 70%;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    main {
+      width: 95%;
+    }
   }
 </style>
