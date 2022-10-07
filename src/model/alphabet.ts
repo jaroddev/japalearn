@@ -35,3 +35,8 @@ export interface KanaSubsetFactory {
     dakuon(): Subset
     handakuon(): Subset
 }
+
+export enum KanaType {
+    Kata,
+    Hira
+}

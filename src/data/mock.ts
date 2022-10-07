@@ -3,7 +3,7 @@ import type { KanaSubsetFactory, Subset } from "../model/alphabet";
 export class KanaSubsetMock implements KanaSubsetFactory {
     common(): Subset {
         return {
-            name: "Hiragana",
+            name: "Common Kana",
             letters: [
                 {
                     "romaji": "a",
@@ -211,7 +211,7 @@ export class KanaSubsetMock implements KanaSubsetFactory {
 
     extended(): Subset {
         return {
-            name: "Other Hiragana",
+            name: "Other Kana",
             letters: [
                 {
                     "romaji": "ya",
