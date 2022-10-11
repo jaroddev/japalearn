@@ -9,6 +9,23 @@
 
     const mock = new KanaSubsetMock();
     let exercise: Exercise = Drawer.generateExercise(mock);
+
+    function checkAnswer() {
+        if (exercise.checkAnswer()) {
+            console.log("great");
+            acceptMessage("You've guessed correctly !", notificator);
+        } else {
+            showError("Wrong one", notificator);
+        }
+    }
+
+    function handleKeyDown(e: KeyboardEvent) {
+        console.log(e);
+
+        if (e.key == "Enter") {
+            checkAnswer();
+        }
+    }
 </script>
 
 <div class="layout">
@@ -26,20 +43,10 @@
             type="text"
             placeholder="translation"
             bind:value={exercise.answer.given}
+            on:keydown={handleKeyDown}
         />
 
-        <button
-            on:click={() => {
-                if (exercise.checkAnswer()) {
-                    console.log("great");
-                    acceptMessage("You've guessed correctly !", notificator);
-                } else {
-                    showError("Wrong one", notificator);
-                }
-            }}
-        >
-            Check if valid
-        </button>
+        <button on:click={checkAnswer}> Check if valid </button>
     </div>
 </div>
 
