@@ -1,59 +1,41 @@
 <script lang="ts">
-  import { Alphabet, KanaFactory, KanaType } from "./model/alphabet.js";
-  import { KanaSubsetMock } from "./data/mock.js";
-  import { alphabetSwitcher } from "./store/alphabet";
+  import { Route } from "tinro";
 
-  import SubSet from "./lib/SubSet.svelte";
-  import SubsetHeader from "./lib/SubsetHeader.svelte";
-
-  const mock = new KanaSubsetMock();
-  let alphabet: Alphabet = KanaFactory.createKana(mock);
+  import LetterGrid from "./pages/LetterGrid.svelte";
+  import Exercise from "./pages/Exercise.svelte";
+  import Toast from "./lib/Toast.svelte";
 </script>
 
-<main>
-  {#each alphabet.subsets as { name, letters }}
-    <SubSet {letters}>
-      <div slot="header">
-        <SubsetHeader {name} />
-      </div>
-    </SubSet>
-  {/each}
+<header>
+  <nav>
+    <a href="/japalearn">Grille</a>
+    <a href="/japalearn/exercise">Exercice</a>
+  </nav>
+</header>
 
-  <button class="switch" on:click={alphabetSwitcher.changeType}>
-    {$alphabetSwitcher === KanaType.Hira ? "Katakana" : "Hiragana"}
-  </button>
+<main>
+  <Toast />
+  <Route path="/japalearn/"><LetterGrid /></Route>
+  <Route path="/japalearn/exercise"><Exercise /></Route>
 </main>
 
 <style>
-  main {
-    width: 50%;
-    margin: 0 auto;
+  header {
+    padding: 16px 0;
+    background-color: black;
+    color: white;
   }
 
-  .switch {
-    z-index: 3;
-    position: fixed;
-    bottom: 50px;
-    right: 100px;
-
-    padding: 5px 20px;
-    border: solid 1px transparent;
-
-    border-radius: 15px;
-
-    font-size: 1em;
-    font-weight: 700;
+  header nav {
+    height: 100%;
+    display: flex;
+    padding: 0 16px;
   }
 
-  @media screen and (max-width: 768px) {
-    main {
-      width: 70%;
-    }
-  }
-
-  @media screen and (max-width: 425px) {
-    main {
-      width: 95%;
-    }
+  header a {
+    margin: 0 20px;
+    color: white;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 </style>

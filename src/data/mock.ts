@@ -1,4 +1,6 @@
-import type { KanaSubsetFactory, Subset } from "../model/alphabet";
+import type { KanaSubsetFactory, Subset, Letter } from "../model/alphabet";
+
+import { Exercise } from "../model/exercise";
 
 export class KanaSubsetMock implements KanaSubsetFactory {
     common(): Subset {
@@ -382,4 +384,103 @@ export class KanaSubsetMock implements KanaSubsetFactory {
             ]
         }
     }
+}
+
+export class ExerciseMock {
+    factory: KanaSubsetFactory;
+
+    constructor() {
+        this.factory = new KanaSubsetMock();
+    }
+
+    generateExercices(): Array<Exercise> {
+        const exercices: Array<Exercise> = [];
+
+        for (let index = 0; index < 10; index++) {
+            const ex = Drawer.generateExercise(this.factory);
+            exercices[index] = ex;
+        }
+
+        return exercices;
+    }
+}
+
+// Assignment Syntax => Action + from + to
+// Assignment Syntax => Action + source + target
+// Assignment Syntax example  => `Translate this {} into {}` + from + to
+// Assignment Syntax example  => `Choose the {} coresponding to this {}` + option + hint
+// const kanaToRoma = "Translate this kata into romaji";
+// const romaToKana = "Translate this romaji into a Kana";
+
+// const pickKana = "Choose the kana coresponding to this romaji";
+// const pickRoma = "Choose the romaji coresponding to this kana";
+
+// Randomly draw exercises and other stuff from an alphabet!
+export class Drawer {
+    static ExerciseType: Array<string> = ["katakana", "hiragana"]
+    static Section: Array<string> = ["common", "extended", "dakuon", "handakuon"]
+
+    static drawSection(factory: KanaSubsetFactory): Array<Letter> {
+        let letters: Array<Letter>;
+
+        let sectionName = Drawer.Section[
+            Math.floor(Math.random() * Drawer.Section.length)
+        ];
+
+        switch (sectionName) {
+            case "common":
+                letters = factory.common().letters;
+                break;
+            case "extended":
+                letters = factory.common().letters;
+                break;
+            case "dakuon":
+                letters = factory.common().letters;
+                break;
+            case "handakuon":
+                letters = factory.common().letters;
+                break;
+
+            default:
+                letters = factory.common().letters;
+                break;
+        }
+
+        return letters;
+    }
+
+
+    static drawLetter(letters: Array<Letter>): Letter {
+        return letters[
+            Math.floor(Math.random() * letters.length)
+        ];
+    }
+
+    static drawAlphabet(): string {
+        return Drawer.ExerciseType[
+            Math.floor(Math.random() * Drawer.ExerciseType.length)
+        ];
+    }
+
+    // Should be testable, now it is not the case
+    // Not injecting the right input
+    // Some input are generated inside this function
+    // making the ouput difficult to be tested
+    static generateExercise(factory: KanaSubsetFactory): Exercise {
+        let ex = new Exercise();
+
+        const section = Drawer.drawSection(factory);
+        const letter = Drawer.drawLetter(section);
+        const alphabet = Drawer.drawAlphabet();
+
+        ex.assignement = `Translate this ${alphabet} into romaji`;
+        ex.hint = letter[alphabet];
+        ex.answer = {
+            expected: letter.romaji,
+            given: ""
+        }
+
+        return ex;
+    }
+
 }

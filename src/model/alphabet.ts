@@ -13,6 +13,19 @@ export class Subset {
     name: string
 }
 
+export enum KanaType {
+    Kata,
+    Hira
+}
+
+// Should be implemented in data folder
+export interface KanaSubsetFactory {
+    common(): Subset
+    extended(): Subset
+    dakuon(): Subset
+    handakuon(): Subset
+}
+
 export class KanaFactory {
     static createKana(factory: KanaSubsetFactory): Alphabet {
         let alphabet = new Alphabet();
@@ -26,17 +39,4 @@ export class KanaFactory {
 
         return alphabet
     }
-}
-
-// Should be implemented in data folder
-export interface KanaSubsetFactory {
-    common(): Subset
-    extended(): Subset
-    dakuon(): Subset
-    handakuon(): Subset
-}
-
-export enum KanaType {
-    Kata,
-    Hira
 }
