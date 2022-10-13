@@ -8,20 +8,36 @@
     import type { Exercise } from "../model/exercise";
 
     const mock = new KanaSubsetMock();
-    let exercise: Exercise = Drawer.generateExercise(mock);
+    let lesson: Array<Exercise> = Drawer.generateLesson(mock);
+    let lessonIndex = 0;
+
+    console.log(lesson);
+
+    $: exercise = lesson[lessonIndex];
+    $: hasNext = lessonIndex + 1 < lesson.length;
 
     function checkAnswer() {
+        console.log("before check answer", exercise);
+
         if (exercise.checkAnswer()) {
-            console.log("great");
+            console.log("accept");
+
             acceptMessage("You've guessed correctly !", notificator);
         } else {
+            console.log("reject");
+
             showError("Wrong one", notificator);
+        }
+
+        console.log("before has Next", lessonIndex, lesson.length);
+
+        if (hasNext) {
+            console.log("hasNext");
+            lessonIndex++;
         }
     }
 
     function handleKeyDown(e: KeyboardEvent) {
-        console.log(e);
-
         if (e.key == "Enter") {
             checkAnswer();
         }

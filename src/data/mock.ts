@@ -483,4 +483,14 @@ export class Drawer {
         return ex;
     }
 
+    static generateLesson(factory: KanaSubsetFactory): Array<Exercise> {
+        let lesson: Array<Exercise> = [];
+
+        for (let index = 0; index < 10; index++) {
+            lesson.push(this.generateExercise(factory));
+        }
+
+        return lesson;
+    }
+
 }
