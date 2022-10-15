@@ -7,6 +7,8 @@
     import { ExerciseMock } from "../data/mock";
     import type { Lesson } from "../model/exercise";
 
+    import Score from "../lib/Score.svelte";
+
     const mock = new ExerciseMock();
 
     let lesson: Lesson = mock.generateLesson();
@@ -14,15 +16,52 @@
 
     let score = 0;
 
+    let previous = -1;
+    let sign = "?";
+    let color = "grey";
+
     $: exercise = lesson[lessonIndex];
     $: hasNext = lessonIndex + 1 < lesson.length;
+
+    function getColor(sign: string) {
+        if (sign == "?") {
+            return "grey";
+        }
+
+        if (sign == "X") {
+            return "red";
+        }
+
+        return "green";
+    }
+
+    function getSign(previous) {
+        console.log(previous);
+
+        if (previous == -1) {
+            return "?";
+        }
+
+        if (previous == 0) {
+            return "X";
+        }
+
+        if (previous == 1) {
+            return "+";
+        }
+    }
 
     function checkAnswer() {
         if (exercise.checkAnswer()) {
             acceptMessage("You've guessed correctly !", notificator);
+            previous = 1;
         } else {
             showError("Wrong one", notificator);
+            previous = 0;
         }
+
+        sign = getSign(previous);
+        color = getColor(sign);
 
         score = lesson.reduce((accumulator, current) => {
             return accumulator + current.score();
@@ -45,7 +84,9 @@
         <p class="">{exercise.assignement}</p>
     </div>
 
-    <div class="card score">{score}</div>
+    <div class="card score">
+        <Score {score} {sign} {color} />
+    </div>
 
     <div class="card hint" style="border: 1px solid transparent;">
         <div class="center">{exercise.hint}</div>
@@ -86,13 +127,13 @@
         box-sizing: border-box;
     }
 
-    .score {
-        grid-column: 9 / span 3;
-    }
-
     .assignment p {
         font-size: 2rem;
         text-align: center;
+    }
+
+    .score {
+        grid-column: 9 / span 3;
     }
 
     .hint {

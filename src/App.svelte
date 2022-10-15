@@ -3,7 +3,6 @@
 
   import LetterGrid from "./pages/LetterGrid.svelte";
   import Exercise from "./pages/Exercise.svelte";
-  import Toast from "./lib/Toast.svelte";
 </script>
 
 <header>
@@ -14,7 +13,6 @@
 </header>
 
 <main>
-  <Toast />
   <Route path="/japalearn/"><LetterGrid /></Route>
   <Route path="/japalearn/exercise"><Exercise /></Route>
 </main>
