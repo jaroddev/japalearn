@@ -182,6 +182,15 @@
     }
 
     @media screen and (max-width: 700px) {
+        .assignment {
+            grid-column: 2 / span 10;
+        }
+
+        .score {
+            grid-column: 2 / span 10;
+            min-height: 80px;
+        }
+
         .hint {
             grid-column: 2 / span 10;
         }
