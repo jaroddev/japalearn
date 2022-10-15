@@ -1,13 +1,9 @@
 <script lang="ts">
-    // import { notificator } from "../store/notification";
-
     export let score = 0;
-    export let sign;
-    export let color;
 </script>
 
-<div class="panel" style="border: 2px solid {color};">
-    <div class="previous" style="color: {color};">{sign}</div>
+<div class="panel">
+    <slot name="sign" />
 
     <div class="count">
         {score}
@@ -25,9 +21,9 @@
         text-align: center;
     }
 
-    .previous {
+    div :global(div) {
         flex-grow: 4;
-        font-size: 2.4em;
+        font-size: 1.9em;
     }
 
     .count {

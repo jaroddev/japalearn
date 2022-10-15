@@ -1,9 +1,4 @@
 <script lang="ts">
-    import {
-        acceptMessage,
-        notificator,
-        showError,
-    } from "../store/notification";
     import { ExerciseMock } from "../data/mock";
     import type { Lesson } from "../model/exercise";
 
@@ -16,53 +11,10 @@
 
     let score = 0;
 
-    let previous = -1;
-    let sign = "?";
-    let color = "grey";
-
     $: exercise = lesson[lessonIndex];
     $: hasNext = lessonIndex + 1 < lesson.length;
 
-    function getColor(sign: string) {
-        if (sign == "?") {
-            return "grey";
-        }
-
-        if (sign == "X") {
-            return "red";
-        }
-
-        return "green";
-    }
-
-    function getSign(previous) {
-        console.log(previous);
-
-        if (previous == -1) {
-            return "?";
-        }
-
-        if (previous == 0) {
-            return "X";
-        }
-
-        if (previous == 1) {
-            return "+";
-        }
-    }
-
     function checkAnswer() {
-        if (exercise.checkAnswer()) {
-            acceptMessage("You've guessed correctly !", notificator);
-            previous = 1;
-        } else {
-            showError("Wrong one", notificator);
-            previous = 0;
-        }
-
-        sign = getSign(previous);
-        color = getColor(sign);
-
         score = lesson.reduce((accumulator, current) => {
             return accumulator + current.score();
         }, 0);
@@ -85,7 +37,17 @@
     </div>
 
     <div class="card score">
-        <Score {score} {sign} {color} />
+        <Score {score}>
+            <div slot="sign">
+                {#if lessonIndex == 0}
+                    <div style="color: grey;">?</div>
+                {:else if lesson[lessonIndex - 1].score() == 0}
+                    <div style="color: red;">X</div>
+                {:else if lesson[lessonIndex - 1].score() == 1}
+                    <div style="color: green;">+</div>
+                {/if}
+            </div>
+        </Score>
     </div>
 
     <div class="card hint" style="border: 1px solid transparent;">
