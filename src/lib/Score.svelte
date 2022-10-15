@@ -21,9 +21,9 @@
         text-align: center;
     }
 
-    div :global(div) {
+    div :global([slot="sign"]) {
         flex-grow: 4;
-        font-size: 1.9em;
+        font-size: 2.4em;
     }
 
     .count {
