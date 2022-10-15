@@ -1,0 +1,30 @@
+{
+    "name": "Other Kana",
+    "letters": [
+        {
+            "romaji": "ya",
+            "hiragana": "や",
+            "katakana": "ヤ"
+        },
+        {
+            "romaji": "yu",
+            "hiragana": "ゆ",
+            "katakana": "ユ"
+        },
+        {
+            "romaji": "yo",
+            "hiragana": "よ",
+            "katakana": "ヨ"
+        },
+        {
+            "romaji": "wa",
+            "hiragana": "わ",
+            "katakana": "ワ"
+        },
+        {
+            "romaji": "n",
+            "hiragana": "ん",
+            "katakana": "ン"
+        }
+    ]
+}

@@ -4,35 +4,31 @@
         notificator,
         showError,
     } from "../store/notification";
-    import { Drawer, KanaSubsetMock } from "../data/mock";
-    import type { Exercise } from "../model/exercise";
+    import { ExerciseMock } from "../data/mock";
+    import type { Lesson } from "../model/exercise";
 
-    const mock = new KanaSubsetMock();
-    let lesson: Array<Exercise> = Drawer.generateLesson(mock);
+    const mock = new ExerciseMock();
+
+    let lesson: Lesson = mock.generateLesson();
     let lessonIndex = 0;
 
-    console.log(lesson);
+    let score = 0;
 
     $: exercise = lesson[lessonIndex];
     $: hasNext = lessonIndex + 1 < lesson.length;
 
     function checkAnswer() {
-        console.log("before check answer", exercise);
-
         if (exercise.checkAnswer()) {
-            console.log("accept");
-
             acceptMessage("You've guessed correctly !", notificator);
         } else {
-            console.log("reject");
-
             showError("Wrong one", notificator);
         }
 
-        console.log("before has Next", lessonIndex, lesson.length);
+        score = lesson.reduce((accumulator, current) => {
+            return accumulator + current.score();
+        }, 0);
 
         if (hasNext) {
-            console.log("hasNext");
             lessonIndex++;
         }
     }
@@ -48,6 +44,8 @@
     <div class="card assignment">
         <p class="">{exercise.assignement}</p>
     </div>
+
+    <div class="card score">{score}</div>
 
     <div class="card hint" style="border: 1px solid transparent;">
         <div class="center">{exercise.hint}</div>
@@ -82,10 +80,14 @@
 
     .assignment {
         padding: 20px 0;
-        grid-column: 2 / span 10;
+        grid-column: 2 / span 6;
         height: 100%;
 
         box-sizing: border-box;
+    }
+
+    .score {
+        grid-column: 9 / span 3;
     }
 
     .assignment p {

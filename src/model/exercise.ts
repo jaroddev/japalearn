@@ -10,4 +10,10 @@ export class Exercise {
         return this.answer.given.toLowerCase() === this.answer.expected.toLowerCase();
     }
 
+    score(): 0 | 1 {
+        return this.checkAnswer() ? 1 : 0;
+    }
+
 }
+
+export type Lesson = Array<Exercise>

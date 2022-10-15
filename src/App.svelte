@@ -8,7 +8,7 @@
 
 <header>
   <nav>
-    <a href="/japalearn">Grille</a>
+    <a href="/japalearn/">Grille</a>
     <a href="/japalearn/exercise">Exercice</a>
   </nav>
 </header>
