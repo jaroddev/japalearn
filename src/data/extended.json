@@ -3,28 +3,58 @@
     "letters": [
         {
             "romaji": "ya",
-            "hiragana": "や",
-            "katakana": "ヤ"
+            "hiragana": {
+                "id": 120,
+                "symbol": "や"
+            },
+            "katakana": {
+                "id": 121,
+                "symbol": "ヤ"
+            }
         },
         {
             "romaji": "yu",
-            "hiragana": "ゆ",
-            "katakana": "ユ"
+            "hiragana": {
+                "id": 122,
+                "symbol": "ゆ"
+            },
+            "katakana": {
+                "id": 123,
+                "symbol": "ユ"
+            }
         },
         {
             "romaji": "yo",
-            "hiragana": "よ",
-            "katakana": "ヨ"
+            "hiragana": {
+                "id": 124,
+                "symbol": "よ"
+            },
+            "katakana": {
+                "id": 125,
+                "symbol": "ヨ"
+            }
         },
         {
             "romaji": "wa",
-            "hiragana": "わ",
-            "katakana": "ワ"
+            "hiragana": {
+                "id": 126,
+                "symbol": "わ"
+            },
+            "katakana": {
+                "id": 127,
+                "symbol": "ワ"
+            }
         },
         {
             "romaji": "n",
-            "hiragana": "ん",
-            "katakana": "ン"
+            "hiragana": {
+                "id": 128,
+                "symbol": "ん"
+            },
+            "katakana": {
+                "id": 129,
+                "symbol": "ン"
+            }
         }
     ]
 }

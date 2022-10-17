@@ -3,103 +3,223 @@
     "letters": [
         {
             "romaji": "ga",
-            "hiragana": "が",
-            "katakana": "ガ"
+            "hiragana": {
+                "id": 80,
+                "symbol": "が"
+            },
+            "katakana": {
+                "id": 81,
+                "symbol": "ガ"
+            }
         },
         {
             "romaji": "gi",
-            "hiragana": "ぎ",
-            "katakana": "ギ"
+            "hiragana": {
+                "id": 82,
+                "symbol": "ぎ"
+            },
+            "katakana": {
+                "id": 83,
+                "symbol": "ギ"
+            }
         },
         {
             "romaji": "gu",
-            "hiragana": "ぐ",
-            "katakana": "グ"
+            "hiragana": {
+                "id": 84,
+                "symbol": "ぐ"
+            },
+            "katakana": {
+                "id": 85,
+                "symbol": "グ"
+            }
         },
         {
             "romaji": "ge",
-            "hiragana": "げ",
-            "katakana": "ゲ"
+            "hiragana": {
+                "id": 86,
+                "symbol": "げ"
+            },
+            "katakana": {
+                "id": 87,
+                "symbol": "ゲ"
+            }
         },
         {
             "romaji": "go",
-            "hiragana": "ご",
-            "katakana": "ゴ"
+            "hiragana": {
+                "id": 88,
+                "symbol": "ご"
+            },
+            "katakana": {
+                "id": 89,
+                "symbol": "ゴ"
+            }
         },
         {
             "romaji": "za",
-            "hiragana": "ざ",
-            "katakana": "ザ"
+            "hiragana": {
+                "id": 90,
+                "symbol": "ざ"
+            },
+            "katakana": {
+                "id": 91,
+                "symbol": "ザ"
+            }
         },
         {
             "romaji": "ji",
-            "hiragana": "じ",
-            "katakana": "ジ"
+            "hiragana": {
+                "id": 92,
+                "symbol": "じ"
+            },
+            "katakana": {
+                "id": 93,
+                "symbol": "ジ"
+            }
         },
         {
             "romaji": "zu",
-            "hiragana": "ず",
-            "katakana": "ズ"
+            "hiragana": {
+                "id": 94,
+                "symbol": "ず"
+            },
+            "katakana": {
+                "id": 95,
+                "symbol": "ズ"
+            }
         },
         {
             "romaji": "ze",
-            "hiragana": "ぜ",
-            "katakana": "ゼ"
+            "hiragana": {
+                "id": 96,
+                "symbol": "ぜ"
+            },
+            "katakana": {
+                "id": 97,
+                "symbol": "ゼ"
+            }
         },
         {
             "romaji": "zo",
-            "hiragana": "ぞ",
-            "katakana": "ゾ"
+            "hiragana": {
+                "id": 98,
+                "symbol": "ぞ"
+            },
+            "katakana": {
+                "id": 99,
+                "symbol": "ゾ"
+            }
         },
         {
             "romaji": "da",
-            "hiragana": "だ",
-            "katakana": "ダ"
+            "hiragana": {
+                "id": 100,
+                "symbol": "だ"
+            },
+            "katakana": {
+                "id": 101,
+                "symbol": "ダ"
+            }
         },
         {
             "romaji": "ji",
-            "hiragana": "ぢ",
-            "katakana": "ヂ"
+            "hiragana": {
+                "id": 102,
+                "symbol": "ぢ"
+            },
+            "katakana": {
+                "id": 103,
+                "symbol": "ヂ"
+            }
         },
         {
             "romaji": "zu",
-            "hiragana": "づ",
-            "katakana": "ヅ"
+            "hiragana": {
+                "id": 104,
+                "symbol": "づ"
+            },
+            "katakana": {
+                "id": 105,
+                "symbol": "ヅ"
+            }
         },
         {
             "romaji": "de",
-            "hiragana": "で",
-            "katakana": "デ"
+            "hiragana": {
+                "id": 106,
+                "symbol": "で"
+            },
+            "katakana": {
+                "id": 107,
+                "symbol": "デ"
+            }
         },
         {
             "romaji": "do",
-            "hiragana": "ど",
-            "katakana": "ド"
+            "hiragana": {
+                "id": 108,
+                "symbol": "ど"
+            },
+            "katakana": {
+                "id": 109,
+                "symbol": "ド"
+            }
         },
         {
             "romaji": "ba",
-            "hiragana": "ば",
-            "katakana": "バ"
+            "hiragana": {
+                "id": 110,
+                "symbol": "ば"
+            },
+            "katakana": {
+                "id": 111,
+                "symbol": "バ"
+            }
         },
         {
             "romaji": "bi",
-            "hiragana": "び",
-            "katakana": "ビ"
+            "hiragana": {
+                "id": 112,
+                "symbol": "び"
+            },
+            "katakana": {
+                "id": 113,
+                "symbol": "ビ"
+            }
         },
         {
             "romaji": "bu",
-            "hiragana": "ぶ",
-            "katakana": "ブ"
+            "hiragana": {
+                "id": 114,
+                "symbol": "ぶ"
+            },
+            "katakana": {
+                "id": 115,
+                "symbol": "ブ"
+            }
         },
         {
             "romaji": "be",
-            "hiragana": "べ",
-            "katakana": "ベ"
+            "hiragana": {
+                "id": 116,
+                "symbol": "べ"
+            },
+            "katakana": {
+                "id": 117,
+                "symbol": "ベ"
+            }
         },
         {
             "romaji": "bo",
-            "hiragana": "ぼ",
-            "katakana": "ボ"
+            "hiragana": {
+                "id": 118,
+                "symbol": "ぼ"
+            },
+            "katakana": {
+                "id": 119,
+                "symbol": "ボ"
+            }
         }
     ]
 }

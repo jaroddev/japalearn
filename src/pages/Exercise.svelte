@@ -22,6 +22,9 @@
         if (hasNext) {
             lessonIndex++;
         }
+
+        if (!hasNext) {
+        }
     }
 
     function handleKeyDown(e: KeyboardEvent) {

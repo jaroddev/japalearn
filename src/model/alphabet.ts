@@ -1,7 +1,15 @@
+export type LetterID = number;
+
 export class Letter {
     romaji: string;
-    hiragana: string;
-    katakana: string;
+    hiragana: {
+        id: LetterID;
+        symbol: string;
+    };
+    katakana: {
+        id: LetterID;
+        symbol: string;
+    };
 }
 
 export class Alphabet {

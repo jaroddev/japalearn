@@ -3,28 +3,58 @@
     "letters": [
         {
             "romaji": "pa",
-            "hiragana": "ぱ",
-            "katakana": "パ"
+            "hiragana": {
+                "id": 130,
+                "symbol": "ぱ"
+            },
+            "katakana": {
+                "id": 131,
+                "symbol": "パ"
+            }
         },
         {
             "romaji": "pi",
-            "hiragana": "ぴ",
-            "katakana": "ピ"
+            "hiragana": {
+                "id": 132,
+                "symbol": "ぴ"
+            },
+            "katakana": {
+                "id": 133,
+                "symbol": "ピ"
+            }
         },
         {
             "romaji": "pu",
-            "hiragana": "ぷ",
-            "katakana": "プ"
+            "hiragana": {
+                "id": 134,
+                "symbol": "ぷ"
+            },
+            "katakana": {
+                "id": 135,
+                "symbol": "プ"
+            }
         },
         {
             "romaji": "pe",
-            "hiragana": "ぺ",
-            "katakana": "ペ"
+            "hiragana": {
+                "id": 136,
+                "symbol": "ぺ"
+            },
+            "katakana": {
+                "id": 137,
+                "symbol": "ペ"
+            }
         },
         {
             "romaji": "po",
-            "hiragana": "ぽ",
-            "katakana": "ポ"
+            "hiragana": {
+                "id": 138,
+                "symbol": "ぽ"
+            },
+            "katakana": {
+                "id": 139,
+                "symbol": "ポ"
+            }
         }
     ]
 }

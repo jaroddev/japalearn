@@ -15,8 +15,8 @@
         {#each letters as { romaji, hiragana, katakana }}
             <LetterTile
                 japanese={$alphabetSwitcher === KanaType.Hira
-                    ? hiragana
-                    : katakana}
+                    ? hiragana.symbol
+                    : katakana.symbol}
                 {romaji}
             />
         {/each}

@@ -1,10 +1,13 @@
-import type { KanaSubsetFactory, Subset, Letter } from "../model/alphabet";
+import type { KanaSubsetFactory, Subset, Letter, LetterID } from "../model/alphabet";
+import type { Mastery, MasteryRepo } from "../model/coverage";
 import { Exercise, type Lesson } from "../model/exercise";
 
 import common from "./common.json";
 import extended from "./extended.json";
 import dakuon from "./dakuon.json";
 import handakuon from "./handakuon.json";
+
+import masteries from "./mastery.json"
 
 export class KanaSubsetMock implements KanaSubsetFactory {
     common(): Subset {
@@ -35,7 +38,7 @@ export class ExerciseMock {
         let ex = new Exercise();
 
         ex.assignement = `Translate this ${alphabet} into romaji`;
-        ex.hint = letter[alphabet];
+        ex.hint = letter[alphabet].symbol;
         ex.answer = {
             expected: letter.romaji,
             given: ""
@@ -94,3 +97,27 @@ function shuffle(array: Array<any>) {
 
     return array;
 }
+
+export class MasteryMock implements MasteryRepo {
+
+    masteries: Array<Mastery>
+
+    constructor() {
+        this.masteries = MasteryMock.masteries();
+    }
+
+    static masteries(): Array<Mastery> {
+        return masteries as Array<Mastery>;
+    }
+
+    get(ID: LetterID): Mastery {
+        return this.masteries.find((mastery) => mastery.ID == ID)
+    }
+
+    // lack way to know if exercise was solved or not
+    increase(ID: LetterID) {
+        console.log("for now, not implemented")
+        console.log("lack way to know if exercise was solved or not")
+    }
+
+} 

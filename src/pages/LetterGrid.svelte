@@ -5,12 +5,15 @@
 
     import SubSet from "../lib/SubSet.svelte";
     import SubsetHeader from "../lib/SubsetHeader.svelte";
+    import Progress from "../lib/Progress.svelte";
 
     const mock = new KanaSubsetMock();
     let alphabet: Alphabet = KanaFactory.createKana(mock);
 </script>
 
 <div class="container">
+    <Progress progress="70" />
+
     {#each alphabet.subsets as { name, letters }}
         <SubSet {letters}>
             <div slot="header">
