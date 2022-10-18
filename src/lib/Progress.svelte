@@ -1,8 +1,23 @@
 <script lang="ts">
+    import { onDestroy, onMount } from "svelte";
+
     export let progress = null;
     export let size = 70;
-
     $: radius = size / 2 - size / 5;
+
+    $: dashOffset = circumference(radius);
+
+    let timeout: NodeJS.Timeout;
+
+    onMount(() => {
+        timeout = setTimeout(() => {
+            dashOffset = ((100 - progress) / 100) * circumference(radius);
+        }, 1200);
+    });
+
+    onDestroy(() => {
+        clearTimeout(timeout);
+    });
 
     function circumference(radius: number): number {
         if (radius == 0) return 0;
@@ -12,15 +27,11 @@
     $: defaultStyle = `
         stroke-dasharray: ${circumference(radius)};
         stroke-dashoffset: ${circumference(radius) - 2};
-
-        animation: none;
     `;
 
     $: progressStyle = `
-        animation: dash 1.5s linear forwards;
-
         stroke-dasharray: ${circumference(radius)};
-        stroke-dashoffset: ${circumference(radius) - 2};
+        stroke-dashoffset: ${dashOffset};
     `;
 
     $: style = progress > 0 ? progressStyle : defaultStyle;
@@ -51,11 +62,6 @@
 
     .path {
         stroke-linecap: round;
-    }
-
-    @keyframes dash {
-        to {
-            stroke-dashoffset: 0;
-        }
+        transition: stroke-dashoffset 1.5s;
     }
 </style>

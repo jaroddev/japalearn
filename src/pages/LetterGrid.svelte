@@ -12,7 +12,7 @@
 </script>
 
 <div class="container">
-    <Progress progress="70" />
+    <!-- <Progress progress="96" /> -->
 
     {#each alphabet.subsets as { name, letters }}
         <SubSet {letters}>
