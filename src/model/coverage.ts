@@ -1,6 +1,11 @@
 import type { LetterID } from "./alphabet";
 
 export class Mastery {
+    constructor({ ID, stat }) {
+        this.ID = ID;
+        this.stat = stat;
+    }
+
     ID: LetterID;
     stat: {
         // the number of time we encountered
@@ -10,7 +15,7 @@ export class Mastery {
     }
 
     score(): number {
-        return this.stat.guessed / this.stat.encounter;
+        return (this.stat.guessed / this.stat.encounter) * 100;
     }
 }
 

@@ -1,7 +1,10 @@
 <script lang="ts">
+    import Progress from "./Progress.svelte";
+
     export let japanese: string;
     export let romaji: string;
 
+    export let progress: number;
     function sound() {
         console.log("japanese is ", japanese, " and romaji is ", romaji);
     }
@@ -10,6 +13,7 @@
 <button class="letter" on:click={sound}>
     <p class="japanese">{japanese}</p>
     <p>{romaji}</p>
+    <Progress {progress} size={40} />
 </button>
 
 <style>

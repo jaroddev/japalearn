@@ -1,10 +1,20 @@
 <script lang="ts">
     import { KanaType, type Letter } from "../model/alphabet.js";
+    import { MasteryMock } from "../data/mock";
     import { alphabetSwitcher } from "../store/alphabet.js";
 
     import LetterTile from "./LetterTile.svelte";
 
     export let letters: Array<Letter>;
+
+    $: isHiragana = $alphabetSwitcher === KanaType.Hira;
+
+    const mock = new MasteryMock();
+
+    function score({ id }): number {
+        const mastery = mock.get(id);
+        return mastery.score();
+    }
 </script>
 
 <!-- A subset of an alphabet -->
@@ -14,10 +24,9 @@
     <div class="grid">
         {#each letters as { romaji, hiragana, katakana }}
             <LetterTile
-                japanese={$alphabetSwitcher === KanaType.Hira
-                    ? hiragana.symbol
-                    : katakana.symbol}
+                japanese={isHiragana ? hiragana.symbol : katakana.symbol}
                 {romaji}
+                progress={isHiragana ? score(hiragana) : score(katakana)}
             />
         {/each}
     </div>

@@ -1,5 +1,5 @@
 import type { KanaSubsetFactory, Subset, Letter, LetterID } from "../model/alphabet";
-import type { Mastery, MasteryRepo } from "../model/coverage";
+import { Mastery, type MasteryRepo } from "../model/coverage";
 import { Exercise, type Lesson } from "../model/exercise";
 
 import common from "./common.json";
@@ -103,7 +103,9 @@ export class MasteryMock implements MasteryRepo {
     masteries: Array<Mastery>
 
     constructor() {
-        this.masteries = MasteryMock.masteries();
+        this.masteries = MasteryMock.masteries().map((mastery) => {
+            return new Mastery(mastery)
+        });
     }
 
     static masteries(): Array<Mastery> {
