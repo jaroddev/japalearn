@@ -1,9 +1,11 @@
 <script lang="ts">
+    import { MasteryLocalStorage } from "../data/local";
     import { ExerciseMock } from "../data/mock";
     import type { Lesson } from "../model/exercise";
 
     import Score from "../lib/Score.svelte";
 
+    const repo = new MasteryLocalStorage();
     const mock = new ExerciseMock();
 
     let lesson: Lesson = mock.generateLesson();
@@ -13,17 +15,21 @@
 
     $: exercise = lesson[lessonIndex];
     $: hasNext = lessonIndex + 1 < lesson.length;
+    $: disabled = exercise.answer.given === "";
 
     function checkAnswer() {
         score = lesson.reduce((accumulator, current) => {
             return accumulator + current.score();
         }, 0);
 
+        repo.increase(exercise.ID, exercise.checkAnswer());
+
         if (hasNext) {
             lessonIndex++;
         }
 
         if (!hasNext) {
+            console.log("The lesson just ended");
         }
     }
 
@@ -66,7 +72,9 @@
             on:keydown={handleKeyDown}
         />
 
-        <button on:click={checkAnswer}> Check if valid </button>
+        <button on:click={checkAnswer} {disabled} class:disabled>
+            Check if valid
+        </button>
     </div>
 </div>
 
@@ -144,6 +152,10 @@
 
         font-weight: 900;
         font-size: 1.4em;
+    }
+
+    .answer button.disabled {
+        background-color: rgba(0, 0, 0, 0.393);
     }
 
     @media screen and (max-width: 700px) {

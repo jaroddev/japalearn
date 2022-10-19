@@ -24,16 +24,18 @@ export class MasteryLocalStorage implements MasteryRepo {
     }
 
     get(ID: LetterID): Mastery {
-        const mastery = this.masteries.find((mastery) => mastery.ID === ID);
+        let mastery = this.masteries.find((mastery) => mastery.ID === ID);
 
         if (mastery === undefined) {
-            return new Mastery({
+            mastery = new Mastery({
                 ID,
                 stat: {
                     guessed: 0,
                     encounter: 0,
                 }
             });
+
+            this.masteries.push(mastery);
         }
 
         return mastery
@@ -41,7 +43,11 @@ export class MasteryLocalStorage implements MasteryRepo {
     }
 
     increase(ID: LetterID, guessed: boolean) {
-        const mastery = this.masteries.find((mastery) => mastery.ID === ID);
+        const mastery = this.get(ID);
+        console.log(this.masteries);
+        console.log(mastery);
+
+
         mastery.encountered(guessed)
 
         this.save();

@@ -1,4 +1,7 @@
+import type { LetterID } from "./alphabet";
+
 export class Exercise {
+    ID: LetterID;
     assignement: string;
     hint: string;
     answer: {

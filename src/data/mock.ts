@@ -39,6 +39,7 @@ export class ExerciseMock {
 
         ex.assignement = `Translate this ${alphabet} into romaji`;
         ex.hint = letter[alphabet].symbol;
+        ex.ID = letter[alphabet].id;
         ex.answer = {
             expected: letter.romaji,
             given: ""
