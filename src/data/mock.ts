@@ -34,20 +34,6 @@ export class ExerciseMock {
         this.factory = new KanaSubsetMock();
     }
 
-    generateExercise(alphabet: string, letter: Letter): Exercise {
-        let ex = new Exercise();
-
-        ex.assignement = `Translate this ${alphabet} into romaji`;
-        ex.hint = letter[alphabet].symbol;
-        ex.ID = letter[alphabet].id;
-        ex.answer = {
-            expected: letter.romaji,
-            given: ""
-        }
-
-        return ex;
-    }
-
     generateLesson(): Lesson {
         const subsets = [
             this.factory.common(),
@@ -60,7 +46,7 @@ export class ExerciseMock {
             .flatMap((subset) => Drawer.drawLetters(subset.letters, 3))
             .map((letter) => {
                 const alphabet = Drawer.drawAlphabet();
-                const exercise = this.generateExercise(alphabet, letter)
+                const exercise = new Exercise(alphabet, letter);
                 return exercise
             })
     }
