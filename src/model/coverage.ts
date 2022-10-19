@@ -17,9 +17,17 @@ export class Mastery {
     score(): number {
         return (this.stat.guessed / this.stat.encounter) * 100;
     }
+
+    encountered(guessed: boolean) {
+        this.stat.encounter++
+
+        if (guessed) {
+            this.stat.guessed++
+        }
+    }
 }
 
 export interface MasteryRepo {
     get(ID: LetterID): Mastery
-    increase(ID: LetterID)
+    increase(ID: LetterID, guessed: boolean)
 }

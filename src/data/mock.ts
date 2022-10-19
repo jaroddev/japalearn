@@ -117,7 +117,7 @@ export class MasteryMock implements MasteryRepo {
     }
 
     // lack way to know if exercise was solved or not
-    increase(ID: LetterID) {
+    increase(ID: LetterID, guessed: boolean) {
         console.log("for now, not implemented")
         console.log("lack way to know if exercise was solved or not")
     }

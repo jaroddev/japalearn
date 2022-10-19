@@ -1,6 +1,6 @@
 <script lang="ts">
     import { KanaType, type Letter } from "../model/alphabet.js";
-    import { MasteryMock } from "../data/mock";
+    import { MasteryLocalStorage } from "../data/local";
     import { alphabetSwitcher } from "../store/alphabet.js";
 
     import LetterTile from "./LetterTile.svelte";
@@ -9,10 +9,10 @@
 
     $: isHiragana = $alphabetSwitcher === KanaType.Hira;
 
-    const mock = new MasteryMock();
+    const repo = new MasteryLocalStorage();
 
     function score({ id }): number {
-        const mastery = mock.get(id);
+        const mastery = repo.get(id);
         return mastery.score();
     }
 </script>
