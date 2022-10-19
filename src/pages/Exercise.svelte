@@ -4,6 +4,7 @@
     import type { Lesson } from "../model/exercise";
 
     import Score from "../lib/Score.svelte";
+    import ExerciseAnswerInput from "../lib/ExerciseAnswerInput.svelte";
 
     const repo = new MasteryLocalStorage();
     const mock = new ExerciseMock();
@@ -15,9 +16,8 @@
 
     $: exercise = lesson[lessonIndex];
     $: hasNext = lessonIndex + 1 < lesson.length;
-    $: disabled = exercise.answer.given === "";
 
-    function checkAnswer() {
+    function nextExercise() {
         score = lesson.reduce((accumulator, current) => {
             return accumulator + current.score();
         }, 0);
@@ -30,12 +30,6 @@
 
         if (!hasNext) {
             console.log("The lesson just ended");
-        }
-    }
-
-    function handleKeyDown(e: KeyboardEvent) {
-        if (e.key == "Enter") {
-            checkAnswer();
         }
     }
 </script>
@@ -64,17 +58,7 @@
     </div>
 
     <div class="answer" style="border: 1px solid transparent;">
-        <input
-            class="card"
-            type="text"
-            placeholder="translation"
-            bind:value={exercise.answer.given}
-            on:keydown={handleKeyDown}
-        />
-
-        <button on:click={checkAnswer} {disabled} class:disabled>
-            Check if valid
-        </button>
+        <ExerciseAnswerInput {exercise} {nextExercise} />
     </div>
 </div>
 
@@ -133,29 +117,6 @@
         flex-direction: column;
 
         justify-content: space-between;
-    }
-
-    .answer input {
-        height: 60%;
-        font-size: 3em;
-
-        text-align: center;
-    }
-
-    .answer button {
-        height: 20%;
-        width: 100%;
-
-        background-color: green;
-        text-align: center;
-        color: whitesmoke;
-
-        font-weight: 900;
-        font-size: 1.4em;
-    }
-
-    .answer button.disabled {
-        background-color: rgba(0, 0, 0, 0.393);
     }
 
     @media screen and (max-width: 700px) {
