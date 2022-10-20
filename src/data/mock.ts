@@ -1,67 +1,70 @@
-import type { KanaSubsetFactory, Subset, Letter, LetterID } from "../model/alphabet";
-import { Mastery, type MasteryRepo } from "../model/coverage";
+import { AlphabetType } from "../model/alphabet";
+import type { Subset, Letter } from "../model/alphabet";
 import { Exercise, type Lesson } from "../model/exercise";
 
-import common from "./common.json";
-import extended from "./extended.json";
-import dakuon from "./dakuon.json";
-import handakuon from "./handakuon.json";
+import type { AlphabetRepo } from "./repo";
 
-import masteries from "./mastery.json"
+import hiragana from "./hiragana.json"
+import katakana from "./katakana.json"
 
-export class KanaSubsetMock implements KanaSubsetFactory {
-    common(): Subset {
-        return common as Subset
+export class AlphabetFactory {
+
+    static getRepo(type: AlphabetType): AlphabetRepo {
+
+        switch (type) {
+            case AlphabetType.Hira:
+                return new HiraganaStub();
+            case AlphabetType.Kata:
+                return new KatakanaStub();
+            default:
+                return new HiraganaStub();
+        }
+
+    }
+}
+
+export class HiraganaStub implements AlphabetRepo {
+
+    getAlphabet(): Array<Subset> {
+        return hiragana as Array<Subset>
     }
 
-    extended(): Subset {
-        return extended as Subset
-    }
+}
 
-    dakuon(): Subset {
-        return dakuon as Subset
-    }
-
-    handakuon(): Subset {
-        return handakuon as Subset
+export class KatakanaStub implements AlphabetRepo {
+    getAlphabet(): Array<Subset> {
+        return katakana as Array<Subset>
     }
 }
 
 export class ExerciseMock {
-    factory: KanaSubsetFactory;
-
-    constructor() {
-        this.factory = new KanaSubsetMock();
-    }
+    repo: AlphabetRepo;
 
     generateLesson(): Lesson {
-        const subsets = [
-            this.factory.common(),
-            this.factory.extended(),
-            this.factory.dakuon(),
-            this.factory.handakuon()
-        ];
-
-        return subsets
-            .flatMap((subset) => Drawer.drawLetters(subset.letters, 3))
-            .map((letter) => {
-                const alphabet = Drawer.drawAlphabet();
-                const exercise = new Exercise(alphabet, letter);
-                return exercise
+        return [...Array(10)]
+            .flatMap(() => {
+                const alphabet = Random.alphabet();
+                const repo = AlphabetFactory.getRepo(alphabet);
+                const subsets = repo.getAlphabet();
+                const subset = Random.subset(subsets)
+                const [letter] = Random.letters(subset.letters, 1)
+                return new Exercise(alphabet, letter);
             })
     }
 }
 
-class Drawer {
-    static ExerciseType: Array<string> = ["katakana", "hiragana"]
-
-    static drawAlphabet(): string {
-        return Drawer.ExerciseType[
-            Math.floor(Math.random() * Drawer.ExerciseType.length)
+class Random {
+    static alphabet(): AlphabetType {
+        return Object.values(AlphabetType)[
+            Math.floor(Math.random() * Object.keys(AlphabetType).length)
         ];
     }
 
-    static drawLetters(letters: Array<Letter>, wanted: number): Array<Letter> {
+    static subset(subsets: Array<Subset>): Subset {
+        return subsets[Math.floor(Math.random() * subsets.length)]
+    }
+
+    static letters(letters: Array<Letter>, wanted: number): Array<Letter> {
         if (wanted > letters.length) {
             wanted = letters.length
         }
@@ -84,29 +87,3 @@ function shuffle(array: Array<any>) {
 
     return array;
 }
-
-export class MasteryMock implements MasteryRepo {
-
-    masteries: Array<Mastery>
-
-    constructor() {
-        this.masteries = MasteryMock.masteries().map((mastery) => {
-            return new Mastery(mastery)
-        });
-    }
-
-    static masteries(): Array<Mastery> {
-        return masteries as Array<Mastery>;
-    }
-
-    get(ID: LetterID): Mastery {
-        return this.masteries.find((mastery) => mastery.ID == ID)
-    }
-
-    // lack way to know if exercise was solved or not
-    increase(ID: LetterID, guessed: boolean) {
-        console.log("for now, not implemented")
-        console.log("lack way to know if exercise was solved or not")
-    }
-
-} 

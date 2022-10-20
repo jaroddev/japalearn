@@ -11,14 +11,13 @@ export class Exercise {
 
     constructor(alphabet: string, letter: Letter) {
         this.assignement = `Translate this ${alphabet} into romaji`;
-        this.hint = letter[alphabet].symbol;
-        this.ID = letter[alphabet].id;
+        this.hint = letter.symbol;
+        this.ID = letter.id;
         this.answer = {
             expected: letter.romaji,
             given: ""
         }
     }
-
 
     checkAnswer(): boolean {
         return this.answer.given.toLowerCase() === this.answer.expected.toLowerCase();

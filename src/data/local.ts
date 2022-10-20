@@ -1,5 +1,7 @@
 import type { LetterID } from "../model/alphabet";
-import { Mastery, type MasteryRepo } from "../model/coverage";
+import { Mastery } from "../model/coverage";
+
+import type { MasteryRepo } from "./repo";
 
 export class MasteryLocalStorage implements MasteryRepo {
 

@@ -1,17 +1,12 @@
 export type LetterID = number;
 
 export class Letter {
+    id: LetterID;
     romaji: string;
-    hiragana: {
-        id: LetterID;
-        symbol: string;
-    };
-    katakana: {
-        id: LetterID;
-        symbol: string;
-    };
+    symbol: string;
 }
 
+// is it used somewhere ??
 export class Alphabet {
     subsets: Array<Subset>
 }
@@ -21,30 +16,7 @@ export class Subset {
     name: string
 }
 
-export enum KanaType {
-    Kata,
-    Hira
-}
-
-// Should be implemented in data folder
-export interface KanaSubsetFactory {
-    common(): Subset
-    extended(): Subset
-    dakuon(): Subset
-    handakuon(): Subset
-}
-
-export class KanaFactory {
-    static createKana(factory: KanaSubsetFactory): Alphabet {
-        let alphabet = new Alphabet();
-
-        alphabet.subsets = [
-            factory.common(),
-            factory.extended(),
-            factory.dakuon(),
-            factory.handakuon()
-        ]
-
-        return alphabet
-    }
+export enum AlphabetType {
+    Hira = "hiragana",
+    Kata = "katakana"
 }

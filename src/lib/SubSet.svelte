@@ -1,13 +1,10 @@
 <script lang="ts">
-    import { KanaType, type Letter } from "../model/alphabet.js";
+    import type { Letter } from "../model/alphabet.js";
     import { MasteryLocalStorage } from "../data/local";
-    import { alphabetSwitcher } from "../store/alphabet.js";
 
     import LetterTile from "./LetterTile.svelte";
 
     export let letters: Array<Letter>;
-
-    $: isHiragana = $alphabetSwitcher === KanaType.Hira;
 
     const repo = new MasteryLocalStorage();
 
@@ -22,11 +19,11 @@
     <slot name="header" />
 
     <div class="grid">
-        {#each letters as { romaji, hiragana, katakana }}
+        {#each letters as letter}
             <LetterTile
-                japanese={isHiragana ? hiragana.symbol : katakana.symbol}
-                {romaji}
-                progress={isHiragana ? score(hiragana) : score(katakana)}
+                japanese={letter.symbol}
+                romaji={letter.romaji}
+                progress={score(letter)}
             />
         {/each}
     </div>

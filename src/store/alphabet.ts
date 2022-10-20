@@ -1,10 +1,10 @@
 import { writable } from "svelte/store";
-import { KanaType } from "../model/alphabet";
+import { AlphabetType } from "../model/alphabet";
 
 export const alphabetSwitcher = TypeSwitcher();
 
 function TypeSwitcher() {
-    const defaultState = KanaType.Hira;
+    const defaultState = AlphabetType.Hira;
     const { subscribe, set, } = writable(defaultState);
 
     let currentState = defaultState;
@@ -12,10 +12,10 @@ function TypeSwitcher() {
     return {
         subscribe,
         changeType: () => {
-            if (currentState === KanaType.Hira) {
-                currentState = KanaType.Kata
+            if (currentState === AlphabetType.Hira) {
+                currentState = AlphabetType.Kata
             } else {
-                currentState = KanaType.Hira
+                currentState = AlphabetType.Hira
             }
             set(currentState)
         }

@@ -1,0 +1,372 @@
+[
+    {
+        "name": "Common Kana",
+        "letters": [
+            {
+                "id": 0,
+                "romaji": "a",
+                "symbol": "あ"
+            },
+            {
+                "id": 2,
+                "romaji": "i",
+                "symbol": "い"
+            },
+            {
+                "id": 4,
+                "romaji": "u",
+                "symbol": "う"
+            },
+            {
+                "id": 6,
+                "romaji": "e",
+                "symbol": "え"
+            },
+            {
+                "id": 8,
+                "romaji": "o",
+                "symbol": "お"
+            },
+            {
+                "id": 10,
+                "romaji": "ka",
+                "symbol": "か"
+            },
+            {
+                "id": 12,
+                "romaji": "ki",
+                "symbol": "き"
+            },
+            {
+                "id": 14,
+                "romaji": "ku",
+                "symbol": "く"
+            },
+            {
+                "id": 16,
+                "romaji": "ke",
+                "symbol": "け"
+            },
+            {
+                "id": 18,
+                "romaji": "ko",
+                "symbol": "こ"
+            },
+            {
+                "id": 20,
+                "romaji": "sa",
+                "symbol": "さ"
+            },
+            {
+                "id": 22,
+                "romaji": "shi",
+                "symbol": "し"
+            },
+            {
+                "id": 24,
+                "romaji": "su",
+                "symbol": "す"
+            },
+            {
+                "id": 26,
+                "romaji": "se",
+                "symbol": "せ"
+            },
+            {
+                "id": 28,
+                "romaji": "so",
+                "symbol": "そ"
+            },
+            {
+                "id": 30,
+                "romaji": "ta",
+                "symbol": "た"
+            },
+            {
+                "id": 32,
+                "romaji": "chi",
+                "symbol": "ち"
+            },
+            {
+                "id": 34,
+                "romaji": "tsu",
+                "symbol": "つ"
+            },
+            {
+                "id": 36,
+                "romaji": "te",
+                "symbol": "て"
+            },
+            {
+                "id": 38,
+                "romaji": "to",
+                "symbol": "と"
+            },
+            {
+                "id": 40,
+                "romaji": "na",
+                "symbol": "な"
+            },
+            {
+                "id": 42,
+                "romaji": "ni",
+                "symbol": "に"
+            },
+            {
+                "id": 44,
+                "romaji": "nu",
+                "symbol": "ぬ"
+            },
+            {
+                "id": 46,
+                "romaji": "ne",
+                "symbol": "ね"
+            },
+            {
+                "id": 48,
+                "romaji": "no",
+                "symbol": "の"
+            },
+            {
+                "id": 50,
+                "romaji": "ha",
+                "symbol": "は"
+            },
+            {
+                "id": 52,
+                "romaji": "hi",
+                "symbol": "ひ"
+            },
+            {
+                "id": 54,
+                "romaji": "fu",
+                "symbol": "ふ"
+            },
+            {
+                "id": 56,
+                "romaji": "he",
+                "symbol": "へ"
+            },
+            {
+                "id": 58,
+                "romaji": "ho",
+                "symbol": "ほ"
+            },
+            {
+                "id": 60,
+                "romaji": "ma",
+                "symbol": "ま"
+            },
+            {
+                "id": 62,
+                "romaji": "mi",
+                "symbol": "み"
+            },
+            {
+                "id": 64,
+                "romaji": "mu",
+                "symbol": "む"
+            },
+            {
+                "id": 66,
+                "romaji": "me",
+                "symbol": "め"
+            },
+            {
+                "id": 68,
+                "romaji": "mo",
+                "symbol": "も"
+            },
+            {
+                "id": 70,
+                "romaji": "ra",
+                "symbol": "ら"
+            },
+            {
+                "id": 72,
+                "romaji": "ri",
+                "symbol": "り"
+            },
+            {
+                "id": 74,
+                "romaji": "ru",
+                "symbol": "る"
+            },
+            {
+                "id": 76,
+                "romaji": "re",
+                "symbol": "れ"
+            },
+            {
+                "id": 78,
+                "romaji": "ro",
+                "symbol": "ろ"
+            }
+        ]
+    },
+    {
+        "name": "Other Kana",
+        "letters": [
+            {
+                "id": 120,
+                "romaji": "ya",
+                "symbol": "や"
+            },
+            {
+                "id": 122,
+                "romaji": "yu",
+                "symbol": "ゆ"
+            },
+            {
+                "id": 124,
+                "romaji": "yo",
+                "symbol": "よ"
+            },
+            {
+                "id": 126,
+                "romaji": "wa",
+                "symbol": "わ"
+            },
+            {
+                "id": 128,
+                "romaji": "n",
+                "symbol": "ん"
+            }
+        ]
+    },
+    {
+        "name": "Dakuon",
+        "letters": [
+            {
+                "id": 80,
+                "romaji": "ga",
+                "symbol": "が"
+            },
+            {
+                "id": 82,
+                "romaji": "gi",
+                "symbol": "ぎ"
+            },
+            {
+                "id": 84,
+                "romaji": "gu",
+                "symbol": "ぐ"
+            },
+            {
+                "id": 86,
+                "romaji": "ge",
+                "symbol": "げ"
+            },
+            {
+                "id": 88,
+                "romaji": "go",
+                "symbol": "ご"
+            },
+            {
+                "id": 90,
+                "romaji": "za",
+                "symbol": "ざ"
+            },
+            {
+                "id": 92,
+                "romaji": "ji",
+                "symbol": "じ"
+            },
+            {
+                "id": 94,
+                "romaji": "zu",
+                "symbol": "ず"
+            },
+            {
+                "id": 96,
+                "romaji": "ze",
+                "symbol": "ぜ"
+            },
+            {
+                "id": 98,
+                "romaji": "zo",
+                "symbol": "ぞ"
+            },
+            {
+                "id": 100,
+                "romaji": "da",
+                "symbol": "だ"
+            },
+            {
+                "id": 102,
+                "romaji": "ji",
+                "symbol": "ぢ"
+            },
+            {
+                "id": 104,
+                "romaji": "zu",
+                "symbol": "づ"
+            },
+            {
+                "id": 106,
+                "romaji": "de",
+                "symbol": "で"
+            },
+            {
+                "id": 108,
+                "romaji": "do",
+                "symbol": "ど"
+            },
+            {
+                "id": 110,
+                "romaji": "ba",
+                "symbol": "ば"
+            },
+            {
+                "id": 112,
+                "romaji": "bi",
+                "symbol": "び"
+            },
+            {
+                "id": 114,
+                "romaji": "bu",
+                "symbol": "ぶ"
+            },
+            {
+                "id": 116,
+                "romaji": "be",
+                "symbol": "べ"
+            },
+            {
+                "id": 118,
+                "romaji": "bo",
+                "symbol": "ぼ"
+            }
+        ]
+    },
+    {
+        "name": "Handakuon",
+        "letters": [
+            {
+                "id": 130,
+                "romaji": "pa",
+                "symbol": "ぱ"
+            },
+            {
+                "id": 132,
+                "romaji": "pi",
+                "symbol": "ぴ"
+            },
+            {
+                "id": 134,
+                "romaji": "pu",
+                "symbol": "ぷ"
+            },
+            {
+                "id": 136,
+                "romaji": "pe",
+                "symbol": "ぺ"
+            },
+            {
+                "id": 138,
+                "romaji": "po",
+                "symbol": "ぽ"
+            }
+        ]
+    }
+]
